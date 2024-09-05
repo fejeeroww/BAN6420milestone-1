@@ -1,0 +1,52 @@
+from policyholder import Policyholder
+from product import Product
+from payment import Payment
+from datetime import datetime, timedelta
+
+# Create products
+product1 = Product(1, "Basic Insurance", "Basic coverage for individuals", 100)
+product2 = Product(2, "Premium Insurance", "Comprehensive coverage for families", 250)
+
+# Create policyholders
+policyholder1 = Policyholder(1, "John Doe", "john@example.com", "123-456-7890")
+policyholder2 = Policyholder(2, "Jane Smith", "jane@example.com", "987-654-3210")
+
+# Add products to policyholders
+policyholder1.add_product(product1)
+policyholder2.add_product(product2)
+
+# Create payments
+payment1 = Payment(1, policyholder1, product1, 100, datetime.now() + timedelta(days=30))
+payment2 = Payment(2, policyholder2, product2, 250, datetime.now() + timedelta(days=30))
+
+# Process payments
+payment1.process_payment()
+payment2.process_payment()
+
+# Display policyholder details
+print("Policyholder 1 Details:")
+policyholder1.display_details()
+print("\nPayment Details:")
+payment1.display_details()
+
+print("\n" + "="*50 + "\n")
+
+print("Policyholder 2 Details:")
+policyholder2.display_details()
+print("\nPayment Details:")
+payment2.display_details()
+
+# Demonstrate other functionalities
+print("\n" + "="*50 + "\n")
+
+print("Suspending Policyholder 1:")
+policyholder1.suspend()
+policyholder1.display_details()
+
+print("\nUpdating Product 2:")
+product2.update(price=275)
+product2.display_details()
+
+print("\nSending payment reminder for Policyholder 2:")
+payment2.send_reminder()
+
