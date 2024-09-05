@@ -1,0 +1,34 @@
+from datetime import datetime
+
+class Policyholder:
+    def __init__(self, id, name, email, phone):
+        self.id = id
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.status = "Active"
+        self.registration_date = datetime.now()
+        self.products = []
+
+    def suspend(self):
+        self.status = "Suspended"
+
+    def reactivate(self):
+        self.status = "Active"
+
+    def add_product(self, product):
+        self.products.append(product)
+
+    def remove_product(self, product):
+        self.products.remove(product)
+
+    def display_details(self):
+        print(f"Policyholder ID: {self.id}")
+        print(f"Name: {self.name}")
+        print(f"Email: {self.email}")
+        print(f"Phone: {self.phone}")
+        print(f"Status: {self.status}")
+        print(f"Registration Date: {self.registration_date}")
+        print("Products:")
+        for product in self.products:
+            print(f"- {product.name}")
